@@ -1,69 +1,119 @@
-# Welcome to your Lovable project
 
-## Project info
+# WhisperChat - Full-Stack Chat Application
 
-**URL**: https://lovable.dev/projects/c403eca5-df2a-4fe8-a117-c95a0c6bed36
+A real-time messaging application with support for one-on-one and group chats, file sharing, and secure user authentication.
 
-## How can I edit this code?
+## Project Structure
 
-There are several ways of editing your application.
+This project consists of two main parts:
 
-**Use Lovable**
+1. **Frontend**: React-based application with a modern UI for real-time messaging
+2. **Backend**: Node.js/Express server with WebSockets for real-time communication
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c403eca5-df2a-4fe8-a117-c95a0c6bed36) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- User authentication (login/signup) with JWT
+- Real-time messaging using WebSockets
+- One-on-one and group chats
+- Message status (sent, delivered, read)
+- File sharing (images, videos, documents)
+- Online/offline status indicators
+- Typing indicators
+- Responsive design
 
-**Use your preferred IDE**
+## Frontend (React)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The frontend is built with:
+- React
+- TypeScript
+- Tailwind CSS
+- Shadcn UI components
+- React Router for navigation
+- Mock data for standalone functionality
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Running the Frontend
 
-Follow these steps:
+```
+# Install dependencies
+npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Demo Credentials
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+For testing purposes, you can use:
+- Email: jane@example.com
+- Password: password123
 
-**Use GitHub Codespaces**
+## Backend (Node.js/Express)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The backend is built with:
+- Node.js and Express
+- MySQL with Drizzle ORM for data storage
+- Socket.io for real-time communication
+- JWT for authentication
+- Multer for file uploads
 
-## What technologies are used for this project?
+### Running the Backend
 
-This project is built with .
+See the [server README](server/README.md) for detailed instructions.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+# Navigate to server directory
+cd server
 
-## How can I deploy this project?
+# Install dependencies
+npm install
 
-Simply open [Lovable](https://lovable.dev/projects/c403eca5-df2a-4fe8-a117-c95a0c6bed36) and click on Share -> Publish.
+# Start development server
+npm run dev
+```
 
-## I want to use a custom domain - is that possible?
+## Database Schema
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- **Users**: User accounts with authentication info
+- **Chats**: Information about chat conversations
+- **Chat Participants**: Linking users to chats
+- **Messages**: The actual message content
+- **Message Status**: Tracking message delivery/read status
+
+## Security Features
+
+- Password encryption with bcrypt
+- JWT-based authentication
+- HTTPS secure communications
+- Rate limiting for API protection
+- Input validation
+
+## Deployment
+
+### Frontend
+
+The frontend can be deployed to any static hosting service:
+
+```
+npm run build
+```
+
+### Backend
+
+The backend server can be deployed to any Node.js hosting service.
+
+## Project Requirements
+
+This project was developed to meet the following requirements:
+
+1. **Database**: MySQL with Drizzle ORM
+2. **Frontend**: React-based UI that displays chat output without needing an API connection
+3. **Backend**: Node.js-based API server with Express
+4. **Authentication**: JWT-based secure user login and signup
+5. **Chat System**: Real-time messaging using WebSockets
+6. **Notifications**: Real-time notifications for new messages
+7. **Security**: Password encryption, secure JWT transmission, rate-limiting
+8. **Media Sharing**: Support for images, videos, and documents
+
+## License
+
+This project is for educational purposes.

@@ -1,9 +1,13 @@
 
-import { useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 
-const Index = () => {
+interface PrivateRouteProps {
+  children: ReactNode;
+}
+
+export default function PrivateRoute({ children }: PrivateRouteProps) {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
@@ -14,11 +18,9 @@ const Index = () => {
     );
   }
 
-  if (isAuthenticated) {
-    return <Navigate to="/chat" replace />;
+  if (!isAuthenticated) {
+    return <Navigate to="/auth" replace />;
   }
 
-  return <Navigate to="/auth" replace />;
-};
-
-export default Index;
+  return <>{children}</>;
+}
