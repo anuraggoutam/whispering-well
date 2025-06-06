@@ -1,119 +1,54 @@
+# React + TypeScript + Vite
 
-# WhisperChat - Full-Stack Chat Application
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-A real-time messaging application with support for one-on-one and group chats, file sharing, and secure user authentication.
+Currently, two official plugins are available:
 
-## Project Structure
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-This project consists of two main parts:
+## Expanding the ESLint configuration
 
-1. **Frontend**: React-based application with a modern UI for real-time messaging
-2. **Backend**: Node.js/Express server with WebSockets for real-time communication
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Features
-
-- User authentication (login/signup) with JWT
-- Real-time messaging using WebSockets
-- One-on-one and group chats
-- Message status (sent, delivered, read)
-- File sharing (images, videos, documents)
-- Online/offline status indicators
-- Typing indicators
-- Responsive design
-
-## Frontend (React)
-
-The frontend is built with:
-- React
-- TypeScript
-- Tailwind CSS
-- Shadcn UI components
-- React Router for navigation
-- Mock data for standalone functionality
-
-### Running the Frontend
-
-```
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-### Demo Credentials
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-For testing purposes, you can use:
-- Email: jane@example.com
-- Password: password123
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## Backend (Node.js/Express)
-
-The backend is built with:
-- Node.js and Express
-- MySQL with Drizzle ORM for data storage
-- Socket.io for real-time communication
-- JWT for authentication
-- Multer for file uploads
-
-### Running the Backend
-
-See the [server README](server/README.md) for detailed instructions.
-
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-# Navigate to server directory
-cd server
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-## Database Schema
-
-- **Users**: User accounts with authentication info
-- **Chats**: Information about chat conversations
-- **Chat Participants**: Linking users to chats
-- **Messages**: The actual message content
-- **Message Status**: Tracking message delivery/read status
-
-## Security Features
-
-- Password encryption with bcrypt
-- JWT-based authentication
-- HTTPS secure communications
-- Rate limiting for API protection
-- Input validation
-
-## Deployment
-
-### Frontend
-
-The frontend can be deployed to any static hosting service:
-
-```
-npm run build
-```
-
-### Backend
-
-The backend server can be deployed to any Node.js hosting service.
-
-## Project Requirements
-
-This project was developed to meet the following requirements:
-
-1. **Database**: MySQL with Drizzle ORM
-2. **Frontend**: React-based UI that displays chat output without needing an API connection
-3. **Backend**: Node.js-based API server with Express
-4. **Authentication**: JWT-based secure user login and signup
-5. **Chat System**: Real-time messaging using WebSockets
-6. **Notifications**: Real-time notifications for new messages
-7. **Security**: Password encryption, secure JWT transmission, rate-limiting
-8. **Media Sharing**: Support for images, videos, and documents
-
-## License
-
-This project is for educational purposes.

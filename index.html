@@ -2,25 +2,264 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>whispering-well</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta
+      name="csrf-token"
+      content="HljdN1tbl0aANLN73sOfeBjeAmacWilrti5KHlPX"
+    />
+    <meta
+      id="myViewport"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Morebet</title>
+    <link rel="stylesheet" href="/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link href="/css/theme.css" rel="stylesheet" />
+    <link href="/css/custom.css" rel="stylesheet" />
+    <link href="/css/footer.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="/css/owl.theme.default.css" />
+    <link rel="stylesheet" href="/css/flipclock.css" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/css/style.css?v=33"
+      id="user-styles"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/css/responsive.css?v=33"
+      id="user-styles2"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/css/admin-style.css?v=32"
+      id="admin-styles"
+    />
+    <script>
+      window.addEventListener('error', function (e) {
+        console.error('Global error caught:', e.error);
+        return true; // Prevent default error handling
+      });
 
-    <meta property="og:title" content="Lovable Generated Project" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+      window.addEventListener('unhandledrejection', function (e) {
+        console.error('Unhandled promise rejection:', e.reason);
+        e.preventDefault();
+      });
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+      // Safe CSS injection function
+      function addCss(css) {
+        try {
+          const head =
+            document.head || document.getElementsByTagName('head')[0];
+          if (!head) {
+            console.warn('No head element found, cannot add CSS');
+            return;
+          }
+
+          const style = document.createElement('style');
+          if (!style) {
+            console.warn('Cannot create style element');
+            return;
+          }
+
+          style.type = 'text/css';
+
+          if (style.styleSheet) {
+            // IE support
+            style.styleSheet.cssText = css;
+          } else {
+            style.appendChild(document.createTextNode(css));
+          }
+
+          head.appendChild(style);
+        } catch (error) {
+          console.error('Error adding CSS:', error);
+        }
+      }
+
+      // Safe attribute setting function
+      function safeSetAttribute(element, attribute, value) {
+        try {
+          if (element && typeof element.setAttribute === 'function') {
+            element.setAttribute(attribute, value);
+            return true;
+          } else {
+            console.warn(
+              'Element is null or does not support setAttribute:',
+              element
+            );
+            return false;
+          }
+        } catch (error) {
+          console.error('Error setting attribute:', error);
+          return false;
+        }
+      }
+
+      // Wait for DOM to be ready
+      function domReady(fn) {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', fn);
+        } else {
+          fn();
+        }
+      }
+
+      // Fixed addCss function with proper error handling
+      function addCssStyles() {
+        try {
+          var hostname = window.location.href;
+
+          // Get all the style elements with null checks
+          var userStyles = document.getElementById('user-styles');
+          var userStyles2 = document.getElementById('user-styles2');
+          var adminStyles = document.getElementById('admin-styles');
+          var mvp = document.getElementById('myViewport');
+
+          if (hostname.includes('admin')) {
+            // Admin styles
+            if (userStyles) userStyles.disabled = true;
+            if (userStyles2) userStyles2.disabled = true;
+            if (adminStyles) adminStyles.disabled = false;
+
+            if (mvp) {
+              safeSetAttribute(mvp, 'content', '');
+            } else {
+              console.warn('myViewport element not found');
+            }
+          } else {
+            // User styles
+            if (adminStyles) adminStyles.disabled = true;
+            if (userStyles) userStyles.disabled = false;
+            if (userStyles2) userStyles2.disabled = false;
+
+            if (mvp) {
+              safeSetAttribute(
+                mvp,
+                'content',
+                'width=device-width, initial-scale=1'
+              );
+            } else {
+              console.warn('myViewport element not found');
+            }
+          }
+        } catch (error) {
+          console.error('Error in addCssStyles function:', error);
+        }
+      }
+
+      // Initialize when DOM is ready
+      domReady(function () {
+        addCssStyles();
+
+        // Monitor URL changes
+        let prevUrl = window.location.href;
+        setInterval(() => {
+          const currUrl = window.location.href;
+          if (currUrl !== prevUrl) {
+            prevUrl = currUrl;
+            addCssStyles();
+          }
+        }, 60);
+      });
+    </script>
+
+    <script type="text/javascript" async>
+      $(document).ready(function () {
+        try {
+          // Commented out popup code
+          // setTimeout(function () { $(".popop_boxman").show(); }, 5000);
+
+          var fixmeTop = 100;
+          var sidebarRight = $('#sidebar-right');
+
+          if (sidebarRight.length && sidebarRight.offset()) {
+            fixmeTop = sidebarRight.offset().top;
+          }
+
+          window.onscroll = function () {
+            myFunction(fixmeTop);
+          };
+        } catch (error) {
+          console.error('Error in document ready:', error);
+        }
+      });
+
+      function myFunction(fixmeTop) {
+        try {
+          var currentScroll = $(window).scrollTop();
+          var sidebarRight = $('#sidebar-right');
+
+          if (!sidebarRight.length) {
+            return; // Exit if sidebar doesn't exist
+          }
+
+          if (window.location.href.includes('admin/casino')) {
+            if (currentScroll >= fixmeTop) {
+              sidebarRight.addClass('stickycasino');
+            } else {
+              sidebarRight.removeClass('stickycasino');
+            }
+          } else {
+            if (currentScroll >= fixmeTop) {
+              sidebarRight.addClass('sticky');
+            } else {
+              sidebarRight.removeClass('sticky');
+            }
+          }
+        } catch (error) {
+          console.error('Error in myFunction:', error);
+        }
+      }
+    </script>
   </head>
-
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="text/javascript" async>
+      $(document).ready(function () {
+        ///setTimeout(function () { $(".popop_boxman").show(); }, 5000);
+        var fixmeTop = 100;
+        if ($('#sidebar-right').offset()) {
+          fixmeTop = $('#sidebar-right').offset().top;
+        }
+
+        window.onscroll = function () {
+          myFunction(fixmeTop);
+        };
+      });
+
+      function myFunction(fixmeTop) {
+        var currentScroll = $(window).scrollTop();
+        if (window.location.href.includes('admin/casino')) {
+          if (currentScroll >= fixmeTop) {
+            $('#sidebar-right').addClass('stickycasino');
+          } else {
+            $('#sidebar-right').removeClass('stickycasino');
+          }
+        } else {
+          if (currentScroll >= fixmeTop) {
+            $('#sidebar-right').addClass('sticky');
+          } else {
+            $('#sidebar-right').removeClass('sticky');
+          }
+        }
+      }
+    </script>
   </body>
 </html>
